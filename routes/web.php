@@ -1,6 +1,6 @@
 <?php
 use Illuminate\Http\Request;
-use App\Http\Controllers\CreateUserController;
+use App\Http\Controllers\UserController;
 use App\Http\Requests\CreateUserRequest;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Validator;
@@ -16,14 +16,6 @@ use Illuminate\Support\Facades\Validator;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::prefix('admin')->group(function(){
-    Route::get('/user/create', [CreateUserController::class, 'index']);
-    Route::post('/user/create', [CreateUserController::class, 'validationForm']);
-    Route::get('/user', function () {
-        return view('admin.user');
-    });
+    Route::resource('user', UserController::class);
 });
