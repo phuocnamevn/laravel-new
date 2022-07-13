@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateRequest extends FormRequest
+class CreateUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,19 +24,21 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => ['required|min:2'],
-            'email' => ['required|'],
-            'password' => ['required|min:8|']
+            'name' => 'required|min:2|not_regex:/^[@#$%&*]/',
+            'email' => 'required|email|not_regex:/^[root]/',
+            'password' => 'required|min:8|regex:/^0-9@#$%&*+$/|confirmed',
+            'fb' => 'url',
+            'ytb' => 'url'
         ];
     }
     public function messages()
 	{
 	   return [
-		  'username.required' => __('Bạn chưa nhập Username.'),
+		  'name.required' => __('Bạn chưa nhập Tên.'),
 		  'email.required' => __('Bạn chưa nhập Email.'),
 		  'password.required' => __('Bạn chưa nhập Mật khẩu.'),
-		  'username.min' => __('Username không được nhỏ hơn 2 ký tự.'),
-		  'username.min' => __('Mật khẩu không được nhỏ hơn 8 ký tự.')
+		  'name.min' => __('name không được nhỏ hơn 2 ký tự.'),
+		  'name.min' => __('Mật khẩu không được nhỏ hơn 8 ký tự.')
 	   ];
 	}
 }

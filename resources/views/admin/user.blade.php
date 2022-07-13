@@ -1,4 +1,5 @@
-@include('head')
+@extends('layouts.master')
+@section('content')
 <style>
     .row{
         padding: 15px;
@@ -8,7 +9,17 @@
         justify-content: center;
 }
 </style>
-<div class="row" style="background-color: rgb(241, 241, 241); margin-top: 15px;">
+<div class="col-md-7 mb-3">
+  <div class="row" style="background-color: rgb(241, 241, 241);">
+  @if ($errors->any())
+  <div class="alert alert-danger">
+      <ul>
+          @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+          @endforeach
+      </ul>
+  </div>
+@endif
     <div class="col-md-12">
     <h2 class="float-start">List User</h2>
     <a href="/admin/user/create" class="btn btn-primary float-end">Create+</a>
@@ -59,3 +70,4 @@
     </ul>
   </div>
 </div>
+@endsection

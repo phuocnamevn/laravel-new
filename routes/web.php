@@ -1,7 +1,9 @@
 <?php
-
-use App\Http\Controllers\CreateController;
+use Illuminate\Http\Request;
+use App\Http\Controllers\CreateUserController;
+use App\Http\Requests\CreateUserRequest;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Validator;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +19,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/admin/user/create', [CreateController::class, 'index']);
-Route::post('/admin/user/create', [CreateController::class, 'validationForm']);
-Route::get('/admin/user', function () {
-    return view('admin.user');
+
+Route::prefix('admin')->group(function(){
+    Route::get('/user/create', [CreateUserController::class, 'index']);
+    Route::post('/user/create', [CreateUserController::class, 'validationForm']);
+    Route::get('/user', function () {
+        return view('admin.user');
+    });
 });
