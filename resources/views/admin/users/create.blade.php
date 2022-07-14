@@ -2,15 +2,6 @@
 @section('content')
 <div class="col-md-7 mb-3">
   <div class="row">
-  {{-- @if ($errors->any())
-  <div class="alert alert-danger">
-      <ul>
-          @foreach ($errors->all() as $error)
-              <li>{{ $error }}</li>
-          @endforeach
-      </ul>
-  </div>
-@endif --}}
     <div class="col-md-12">
     <h2 class="float-start">Create a User </h2>
     <a href="/admin/user" class="btn btn-primary float-end">Back</a>
@@ -43,9 +34,6 @@
   <div class="col-md-6 mb-3">
     <label for="exampleInputPassword2" class="form-label">Password confirm</label>
     <input type="password" class="form-control" name="password-confirm" id="exampleInputPassword2">
-    @if ($errors->has('password-confirm'))
-        <span class="text-danger text-left">{{ $errors->first('password-confirm') }}</span>
-    @endif
   </div>
   <div class="col-md-12 mb-3">
     <label for="add" class="form-label">Address</label>

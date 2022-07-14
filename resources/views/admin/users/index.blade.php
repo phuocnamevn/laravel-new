@@ -1,14 +1,5 @@
 @extends('layouts.admin.master')
 @section('content')
-<style>
-    .row{
-        padding: 15px;
-    }
-    .pagination {
-        display: flex;
-        justify-content: center;
-}
-</style>
 <div class="col-md-7 mb-3">
   <div class="row" style="background-color: rgb(241, 241, 241);">
   @if ($errors->any())
