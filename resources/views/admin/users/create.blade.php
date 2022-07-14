@@ -13,23 +13,23 @@
   <div class="col-md-12 mb-3">
     <label for="name" class="form-label">Name</label>
     <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp">
-    @if ($errors->has('name'))
-        <span class="text-danger text-left">{{ $errors->first('name') }}</span>
-    @endif
+    @error('name')
+    <span class="text-danger text-left">{{$message}}</span>
+    @enderror
   </div>
   <div class="col-md-12 mb-3">
     <label for="exampleInputEmail1" class="form-label">Email address</label>
     <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
-    @if ($errors->has('email'))
-        <span class="text-danger text-left">{{ $errors->first('email') }}</span>
-    @endif
+    @error('email')
+    <span class="text-danger text-left">{{$message}}</span>
+    @enderror
   </div>
   <div class="col-md-6 mb-3">
     <label for="exampleInputPassword1" class="form-label">Password</label>
     <input type="password" class="form-control" name="password" id="exampleInputPassword1">
-    @if ($errors->has('password'))
-        <span class="text-danger text-left">{{ $errors->first('password') }}</span>
-    @endif
+    @error('password')
+    <span class="text-danger text-left">{{$message}}</span>
+    @enderror
   </div>
   <div class="col-md-6 mb-3">
     <label for="exampleInputPassword2" class="form-label">Password confirm</label>
@@ -42,16 +42,16 @@
   <div class="col-md-12 mb-3">
     <label for="fb" class="form-label">Facebook link</label>
     <input type="url" class="form-control" name="fb" id="fb" aria-describedby="emailHelp" placeholder="https://example.com">
-    @if ($errors->has('fb'))
-        <span class="text-danger text-left">{{ $errors->first('fb') }}</span>
-    @endif
+    @error('fb')
+    <span class="text-danger text-left">{{$message}}</span>
+    @enderror
   </div>
   <div class="col-md-12 mb-3">
     <label for="ytb" class="form-label">Youtube</label>
     <input type="url" class="form-control" name="ytb" id="ytb" aria-describedby="emailHelp" placeholder="https://example.com">
-    @if ($errors->has('ytb'))
-        <span class="text-danger text-left">{{ $errors->first('ytb') }}</span>
-    @endif
+    @error('ytb')
+    <span class="text-danger text-left">{{$message}}</span>
+    @enderror
   </div>
   <div class="col-md-12 mb-3">
     <label for="desc" class="form-label">Description</label>

@@ -13,16 +13,16 @@
     <div class="col-md-12 mb-3">
       <label for="exampleInputEmail1" class="form-label">Category ID</label>
       <input type="text" class="form-control" name="id" id="exampleInputEmail1" aria-describedby="emailHelp">
-      @if ($errors->has('id'))
-          <span class="text-danger text-left">{{ $errors->first('id') }}</span>
-      @endif
+      @error('id')
+      <span class="text-danger text-left">{{$message}}</span>
+      @enderror
     </div>
   <div class="col-md-12 mb-3">
     <label for="name" class="form-label">Category Name</label>
     <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp">
-    @if ($errors->has('name'))
-        <span class="text-danger text-left">{{ $errors->first('name') }}</span>
-    @endif
+    @error('name')
+    <span class="text-danger text-left">{{$message}}</span>
+    @enderror
   </div>
   <div class="col-md-12 text-center">
   <button type="submit" class="btn btn-primary">Save</button>

@@ -13,16 +13,16 @@
   <div class="col-md-12 mb-3">
     <label for="name" class="form-label">Name</label>
     <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp">
-    @if ($errors->has('name'))
-        <span class="text-danger text-left">{{ $errors->first('name') }}</span>
-    @endif
+    @error('name')
+    <span class="text-danger text-left">{{$message}}</span>
+    @enderror
   </div>
   <div class="col-md-12 mb-3">
     <label for="exampleInputEmail1" class="form-label">Image</label>
     <input type="file" class="form-control" name="image" id="exampleInputEmail1" aria-describedby="emailHelp">
-    @if ($errors->has('image'))
-        <span class="text-danger text-left">{{ $errors->first('image') }}</span>
-    @endif
+    @error('image')
+    <span class="text-danger text-left">{{$message}}</span>
+    @enderror
   </div>
   <div class="col-md-12 mb-3">
     <label for="ytb" class="form-label">Category</label>
@@ -32,9 +32,9 @@
       <option value="2">Category 2</option>
       <option value="3">Category 3</option>
     </select>
-    @if ($errors->has('category'))
-        <span class="text-danger text-left">{{ $errors->first('category') }}</span>
-    @endif
+    @error('category')
+    <span class="text-danger text-left">{{$message}}</span>
+    @enderror
   </div>
   <div class="col-md-12 mb-3">
     <label for="desc" class="form-label">Description</label>
