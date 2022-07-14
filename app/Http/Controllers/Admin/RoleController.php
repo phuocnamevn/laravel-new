@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-
-use App\Http\Requests\Admin\UserRequest;
+use App\Http\Requests\Admin\RoleRequest;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin.users.index');
+        return view('admin.role.index');
     }
 
     /**
@@ -26,7 +25,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.users.create');
+        return view('admin.role.create');
     }
 
     /**
@@ -35,7 +34,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(RoleRequest $request)
     {
         $this->store($request->validated());
     }

@@ -61,11 +61,11 @@
               <ul class="list-group">
                 <li class="list-group-item active" aria-current="true">System</li>
                 <a href="/admin/user" class="list-group-item list-group-item-action">User management</a>
-                <li class="list-group-item">Role management</li>
-                <li class="list-group-item">Permission management</li>
+                <a href="/admin/role" class="list-group-item">Role management</a>
+                <a href="/admin/permission" class="list-group-item">Permission management</a>
                 <li class="list-group-item active" aria-current="true">Catalog</li>
-                <li class="list-group-item">Product management</li>
-                <li class="list-group-item">Category management</li>
+                <a href="/admin/product" class="list-group-item">Product management</a>
+                <a href="/admin/category" class="list-group-item">Category management</a>
               </ul>
             </div>
             @yield('content')

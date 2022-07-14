@@ -22,7 +22,7 @@ class ValidateUserName implements Rule
 
     public function passes($attribute, $value)
     {
-        return (!is_numeric(substr($value, 0, 1))) ;
+        return !is_numeric(substr($value, 0, 1));
     }
 
     /**
@@ -33,6 +33,6 @@ class ValidateUserName implements Rule
 
     public function message()
     {
-        return 'Không được bắt đầu bằng số.';
+        return 'Do not start with numbers.';
     }
 }

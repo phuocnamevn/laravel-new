@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Admin;
 
 use App\Rules\ValidateUserName;
 use Illuminate\Foundation\Http\FormRequest;
@@ -39,15 +39,4 @@ class UserRequest extends FormRequest
             'ytb' => 'url'
         ];
     }
-
-    public function messages()
-	{
-	   return [
-		  'name.required' => __('Bạn chưa nhập Tên.'),
-		  'email.required' => __('Bạn chưa nhập Email.'),
-		  'password.required' => __('Bạn chưa nhập Mật khẩu.'),
-		  'name.min' => __('name không được nhỏ hơn 2 ký tự.'),
-		  'name.min' => __('Mật khẩu không được nhỏ hơn 8 ký tự.')
-	   ];
-	}
 }
