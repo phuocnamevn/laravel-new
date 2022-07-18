@@ -39,7 +39,7 @@ class UserController extends Controller
         $input = $request->all();
         $collection = collect($input);
         session()->push('user', $collection->all());
-        return  'Success!';
+        return  redirect('/admin/user');
     }
 
     public function mail()

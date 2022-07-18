@@ -28,24 +28,16 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td><img width="30px" src="https://i.imgur.com/s6l2a1U.png"></td>
-        <td>Ada</td>
-        <td>Ada@gmail.com</td>
-        <td><button type="button" class="btn btn-primary">Edit</button> <button type="button" class="btn btn-danger">Delete</button></td>
-      </tr>
-      <tr>
-        <td><img width="30px" src="https://i.imgur.com/s6l2a1U.png"></td>
-        <td>Jacob</td>
-        <td>Thornton@gmail.com</td>
-        <td><button type="button" class="btn btn-primary">Edit</button> <button type="button" class="btn btn-danger">Delete</button></td>
-      </tr>
-      <tr>
-        <td><img width="30px" src="https://i.imgur.com/s6l2a1U.png"></td>
-        <td>Larry the Bird</td>
-        <td>twitter@gmail.com</td>
-        <td><button type="button" class="btn btn-primary">Edit</button> <button type="button" class="btn btn-danger">Delete</button></td>
-      </tr>
+      @if (session()->exists('user'))
+          @foreach (session()->get('user') as $key => $value)
+              <tr>
+                <td><img width="30px" src="https://i.imgur.com/s6l2a1U.png"></td>
+                <td>{{$value['name']}}</td>
+                <td>{{$value['email']}}</td>
+                <td><button type="button" class="btn btn-primary">Edit</button> <button type="button" class="btn btn-danger">Delete</button></td>
+              </tr>
+          @endforeach
+      @endif
     </tbody>
   </table>
   <div class="col-md-12 text-center">

@@ -23,5 +23,4 @@ Route::prefix('admin')->group(function() {
     Route::resource('permission', PermissionController::class);
     Route::resource('product', ProductController::class);
     Route::resource('category', CategoryController::class);
-    session()->put('session','Laravel');
 });
