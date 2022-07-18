@@ -28,8 +28,8 @@
       </tr>
     </thead>
     <tbody>
-      @if (session()->exists('user'))
-          @foreach (session()->get('user') as $key => $value)
+      @if ($list)
+          @foreach ($list as $key => $value)
               <tr>
                 <td><img width="30px" src="https://i.imgur.com/s6l2a1U.png"></td>
                 <td>{{$value['name']}}</td>

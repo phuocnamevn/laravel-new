@@ -8,6 +8,7 @@ use App\Http\Requests\Admin\UserRequest;
 
 class UserController extends Controller
 {
+    public $listuser;
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin.users.index');
+        $this->listuser = session()->get('user');
+        return view('admin.users.index', ['list' => $this->listuser]);
     }
 
     /**
@@ -44,11 +46,13 @@ class UserController extends Controller
 
     public function mail()
     {
-        return view('admin.user.mail');
+        $this->listuser = session()->get('user');
+        return view('mails.sendmailUser', ['list' => $this->listuser]);
     }
     
     public function show()
     {
-        return view('admin.users.mail');
+        $this->listuser = session()->get('user');
+        return view('mails.sendmailUser', ['list' => $this->listuser]);
     }
 }

@@ -13,8 +13,8 @@
                     <div class="col-md-12 mb-3">
                         <select class="form-control" name="mail">
                             <option>Select a user</option>
-                            @if (session()->exists('user'))
-                            @foreach(session()->get('user') as $key => $value)
+                            @if ($list)
+                            @foreach($list as $key => $value)
                             <option>{{ $value['name'] }}</option>
                             @endforeach
                             @endif
