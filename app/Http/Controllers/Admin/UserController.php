@@ -36,6 +36,19 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        $this->store($request->validated());
+        $input = $request->all();
+        $collection = collect($input);
+        session()->push('user', $collection->all());
+        return  'Success!';
+    }
+
+    public function mail()
+    {
+        return view('admin.user.mail');
+    }
+    
+    public function show()
+    {
+        return view('admin.users.mail');
     }
 }

@@ -13,7 +13,10 @@
 @endif
     <div class="col-md-12">
     <h2 class="float-start">List User</h2>
-    <a href="/admin/user/create" class="btn btn-primary float-end">Create+</a>
+    <span class="float-end">
+    <a href="/admin/user/mail" class="btn btn-primary">Send Mail</a>
+    <a href="/admin/user/create" class="btn btn-primary">Create+</a>
+    </span>
     </div>
 <table class="table table-bordered">
     <thead>

@@ -34,7 +34,7 @@ class UserRequest extends FormRequest
                 new ValidateUserName(),
             ],
             'email' => 'required|email|not_regex:/^[root]/',
-            'password' => 'required|min:8|regex:/^0-9@#$%&*+$/|confirmed',
+            'password' => 'required|min:8|regex:/(?=.*?[@#$%&*])/',
             'fb' => 'url',
             'ytb' => 'url'
         ];
