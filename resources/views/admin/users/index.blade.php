@@ -14,7 +14,7 @@
     <div class="col-md-12">
     <h2 class="float-start">List User</h2>
     <span class="float-end">
-    <a href="/admin/user/mail" class="btn btn-primary">Send Mail</a>
+    <a href="/admin/user/form-send-mail" class="btn btn-primary">Send Mail</a>
     <a href="/admin/user/create" class="btn btn-primary">Create+</a>
     </span>
     </div>
@@ -28,8 +28,8 @@
       </tr>
     </thead>
     <tbody>
-      @if ($list)
-          @foreach ($list as $key => $value)
+      @if ($users)
+          @foreach ($users as $key => $value)
               <tr>
                 <td><img width="30px" src="https://i.imgur.com/s6l2a1U.png"></td>
                 <td>{{$value['name']}}</td>

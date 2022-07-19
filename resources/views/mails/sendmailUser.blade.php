@@ -10,11 +10,14 @@
             <form class="g-3 needs-validation" method="post" action="{{ route('testmail') }}">
                 @csrf
                 <div class="row">
+                    @if (Session::has('msg'))
+                        <div class="alert alert-info">{{ Session::get('msg') }}</div>
+                    @endif
                     <div class="col-md-12 mb-3">
                         <select class="form-control" name="mail">
                             <option value="all">Select a user</option>
-                            @if ($list)
-                            @foreach($list as $key => $value)
+                            @if ($users)
+                            @foreach($users as $key => $value)
                             <option value="{{$value['email']}}">{{ $value['name'] }}</option>
                             @endforeach
                             @endif

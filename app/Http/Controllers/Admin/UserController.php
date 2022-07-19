@@ -12,9 +12,8 @@ use App\Services\MailService;
 
 class UserController extends Controller
 {
-    public $listuser;
     protected $mailService;
-    protected $collection;
+
     /**
      * Display a listing of the resource.
      *
@@ -24,10 +23,10 @@ class UserController extends Controller
     {
         $this->mailService = $mailService;
     }
+
     public function index()
     {
-        $this->listuser = session()->get('user');
-        return view('admin.users.index', ['list' => $this->listuser]);
+        return view('admin.users.index', ['users' => $this->getUsers()]);
     }
 
     /**
@@ -48,27 +47,24 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        $this->collection = collect($request->only(['name', 'email', 'password', 'address', 'fb', 'ytb', 'desc']));
-        session()->push('user', $this->collection->all());
+        session()->push('users', $request->only(['name', 'email', 'password', 'address', 'fb', 'ytb', 'desc']));
         return  redirect('/admin/user');
     }
 
     public function mail()
     {
-        $this->listuser = session()->get('user');
-        return view('mails.sendmailUser', ['list' => $this->listuser]);
+        return view('mails.sendmailUser', ['users' => $this->getUsers()]);
     }
     
     public function show()
     {
-        $this->listuser = session()->get('user');
-        return view('mails.sendmailUser', ['list' => $this->listuser]);
+        return view('mails.sendmailUser', ['users' => $this->getUsers()]);
     }
+
     public function formSendMail(Request $request)
     {
         $input = $request->all();
-        $collection = collect(session()->get('user'));
-        $collection = collect(session()->get('user'))->where('email',);
+        $collection = $this->getUsers();
         if($input['mail'] == 'all'){
             $user = $collection;
         }else{
@@ -76,7 +72,12 @@ class UserController extends Controller
         }
         foreach($user as $key => $value){
             $this->mailService->sendUserProfile($value);
-            return "<p> Thành công! Email của bạn đã được gửi</p>";
+            return redirect()->back()->with(['msg' => 'Gửi mail thành công!']);
         }
+    }
+
+    private function getUsers()
+    {
+        return collect(session()->get('users')); 
     }
 }
