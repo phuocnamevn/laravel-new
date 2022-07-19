@@ -51,26 +51,17 @@ class UserController extends Controller
         return  redirect('/admin/user');
     }
 
-    public function mail()
+    public function formSendUserProfile()
     {
-        return view('mails.sendmailUser', ['users' => $this->getUsers()]);
-    }
-    
-    public function show()
-    {
-        return view('mails.sendmailUser', ['users' => $this->getUsers()]);
+        return view('mails.send-mail-user', ['users' => $this->getUsers()]);
     }
 
     public function formSendMail(Request $request)
     {
         $input = $request->all();
         $collection = $this->getUsers();
-        if($input['mail'] == 'all'){
-            $user = $collection;
-        }else{
-            $user = $collection->where('email', $input['mail']);
-        }
-        foreach($user as $key => $value){
+        $users = $input['mail'] == 'all' ? $collection : $collection->where('email', $input['mail']);
+        foreach($users as $key => $value){
             $this->mailService->sendUserProfile($value);
             return redirect()->back()->with(['msg' => 'Gửi mail thành công!']);
         }
