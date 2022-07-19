@@ -5,15 +5,25 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
 use App\Http\Requests\Admin\UserRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+
+use App\Services\MailService;
 
 class UserController extends Controller
 {
     public $listuser;
+    protected $mailService;
+    protected $collection;
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    public function  __construct(MailService $mailService)
+    {
+        $this->mailService = $mailService;
+    }
     public function index()
     {
         $this->listuser = session()->get('user');
@@ -38,9 +48,8 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        $input = $request->all();
-        $collection = collect($input);
-        session()->push('user', $collection->all());
+        $this->collection = collect($request->only(['name', 'email', 'password', 'address', 'fb', 'ytb', 'desc']));
+        session()->push('user', $this->collection->all());
         return  redirect('/admin/user');
     }
 
@@ -54,5 +63,20 @@ class UserController extends Controller
     {
         $this->listuser = session()->get('user');
         return view('mails.sendmailUser', ['list' => $this->listuser]);
+    }
+    public function formSendMail(Request $request)
+    {
+        $input = $request->all();
+        $collection = collect(session()->get('user'));
+        $collection = collect(session()->get('user'))->where('email',);
+        if($input['mail'] == 'all'){
+            $user = $collection;
+        }else{
+            $user = $collection->where('email', $input['mail']);
+        }
+        foreach($user as $key => $value){
+            $this->mailService->sendUserProfile($value);
+            return "<p> Thành công! Email của bạn đã được gửi</p>";
+        }
     }
 }

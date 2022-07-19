@@ -7,15 +7,15 @@
             <a href="/admin/user" class="btn btn-primary float-end">Back</a>
         </div>
         <div class="col-md-12">
-            <form class="g-3 needs-validation" method="post" action="{{ route('permission.store') }}">
+            <form class="g-3 needs-validation" method="post" action="{{ route('testmail') }}">
                 @csrf
                 <div class="row">
                     <div class="col-md-12 mb-3">
                         <select class="form-control" name="mail">
-                            <option>Select a user</option>
+                            <option value="all">Select a user</option>
                             @if ($list)
                             @foreach($list as $key => $value)
-                            <option>{{ $value['name'] }}</option>
+                            <option value="{{$value['email']}}">{{ $value['name'] }}</option>
                             @endforeach
                             @endif
                         </select>
