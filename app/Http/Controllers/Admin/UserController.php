@@ -61,7 +61,7 @@ class UserController extends Controller
         $input = $request->all();
         $collection = $this->getUsers();
         $users = $input['mail'] == 'all' ? $collection : $collection->where('email', $input['mail']);
-        foreach($users as $key => $value){
+        foreach($users as $value){
             $this->mailService->sendUserProfile($value);
             return redirect()->back()->with(['msg' => 'Gửi mail thành công!']);
         }
