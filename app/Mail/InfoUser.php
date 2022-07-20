@@ -16,11 +16,12 @@ class InfoUser extends Mailable
      *
      * @return void
      */
-    public $user;
+    public $user, $file;
 
-    public function __construct($user)
+    public function __construct($user, $file)
     {
         $this->user = $user;
+        $this->file = $file;
     }
 
     /**
@@ -34,6 +35,6 @@ class InfoUser extends Mailable
             'name' => $this->user['name'],
             'email' => $this->user['email'],
             'address' => $this->user['address']
-        ]);
+        ])->attach($this->file);;
     }
 }

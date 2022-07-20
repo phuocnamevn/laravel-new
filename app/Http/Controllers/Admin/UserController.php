@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
 use App\Http\Requests\Admin\UserRequest;
+use App\Http\Requests\FileRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -56,13 +57,18 @@ class UserController extends Controller
         return view('mails.send-mail-user', ['users' => $this->getUsers()]);
     }
 
-    public function formSendMail(Request $request)
+    public function formSendMail(FileRequest $request)
     {
         $input = $request->all();
+        $path = public_path('uploads');
+        $attachment = $request->file('file');
+        $name = time().'.'.$attachment->getClientOriginalExtension();;
+        $attachment->move($path, $name);
+        $path_attachment = $path.'/'.$name;
         $collection = $this->getUsers();
         $users = $input['mail'] == 'all' ? $collection : $collection->where('email', $input['mail']);
         foreach($users as $value){
-            $this->mailService->sendUserProfile($value);
+            $this->mailService->sendUserProfile($value, $path_attachment);
             return redirect()->back()->with(['msg' => 'Gửi mail thành công!']);
         }
     }

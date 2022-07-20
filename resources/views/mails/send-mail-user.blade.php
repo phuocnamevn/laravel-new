@@ -7,7 +7,7 @@
             <a href="/admin/user" class="btn btn-primary float-end">Back</a>
         </div>
         <div class="col-md-12">
-            <form class="g-3 needs-validation" method="post" action="{{ route('testmail') }}">
+            <form class="g-3 needs-validation" method="post" action="{{ route('testmail') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     @if (Session::has('msg'))
@@ -24,6 +24,12 @@
                         </select>
                         @error('mail')
                         <span class="text-danger text-left">{{$message}}</span>
+                        @enderror
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <input type="file" name="file" class="form-control">
+                        @error('file')
+                            <span class="text-danger text-left">{{$message}}</span>
                         @enderror
                     </div>
                     <div class="col-md-12 text-center">
