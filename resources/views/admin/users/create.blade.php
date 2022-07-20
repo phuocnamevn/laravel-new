@@ -33,7 +33,7 @@
   </div>
   <div class="col-md-6 mb-3">
     <label for="exampleInputPassword2" class="form-label">Password confirm</label>
-    <input type="password" class="form-control" name="password-confirm" id="exampleInputPassword2">
+    <input type="password" class="form-control" name="password_confirmation" id="exampleInputPassword2">
   </div>
   <div class="col-md-12 mb-3">
     <label for="add" class="form-label">Address</label>

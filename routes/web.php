@@ -18,9 +18,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('admin')->group(function() {
+    Route::get('user/form-send-mail', [UserController::class, 'formSendUserProfile'])->name('formSendMail');
     Route::resource('user', UserController::class);
     Route::resource('role', RoleController::class);
     Route::resource('permission', PermissionController::class);
     Route::resource('product', ProductController::class);
     Route::resource('category', CategoryController::class);
+    Route::post('testmail', [UserController::class, 'formSendMail'])->name('testmail');
 });
