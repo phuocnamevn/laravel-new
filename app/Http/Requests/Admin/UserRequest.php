@@ -12,7 +12,6 @@ class UserRequest extends FormRequest
      *
      * @return bool
      */
-
     public function authorize()
     {
         return true;
@@ -23,7 +22,6 @@ class UserRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-
     public function rules()
     {
         return [
@@ -36,7 +34,7 @@ class UserRequest extends FormRequest
             'email' => 'required|email|not_regex:/^[root]/',
             'password' => 'required|min:8|regex:/(?=.*?[@#$%&*])/|confirmed',
             'fb' => 'url',
-            'ytb' => 'url'
+            'ytb' => 'url',
         ];
     }
 }
