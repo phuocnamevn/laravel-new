@@ -26,7 +26,7 @@ class CategoryRequest extends FormRequest
     {
         return [
             'id' => 'required',
-            'name' => 'required'
+            'name' => 'required',
         ];
     }
 }

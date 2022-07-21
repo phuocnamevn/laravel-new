@@ -3,7 +3,6 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
@@ -16,7 +15,9 @@ class InfoUser extends Mailable
      *
      * @return void
      */
-    public $user, $file;
+    public $user;
+
+    public $file;
 
     public function __construct($user, $file)
     {
@@ -34,7 +35,7 @@ class InfoUser extends Mailable
         return $this->markdown('mails.admin.inform-user-profile', [
             'name' => $this->user['name'],
             'email' => $this->user['email'],
-            'address' => $this->user['address']
-        ])->attach($this->file);;
+            'address' => $this->user['address'],
+        ])->attach($this->file);
     }
 }

@@ -19,10 +19,9 @@ class ValidateUserName implements Rule
      * @param  mixed  $value
      * @return bool
      */
-
     public function passes($attribute, $value)
     {
-        return !is_numeric(substr($value, 0, 1));
+        return ! is_numeric(substr($value, 0, 1));
     }
 
     /**
@@ -30,7 +29,6 @@ class ValidateUserName implements Rule
      *
      * @return string
      */
-
     public function message()
     {
         return 'Do not start with numbers.';
