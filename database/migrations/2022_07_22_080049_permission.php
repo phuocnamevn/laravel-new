@@ -14,12 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('permissions', function (Blueprint $table) {
-            $table->integer('id', 10)->primary();
+            $table->integer('id')->primary();
             $table->string('name', 255)->unique();
             $table->string('key', 255)->unique();
-            $table->integer('permission_group_id');
+            $table->integer('permission_group_id')->unique();
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
+            $table->foreign('permission_group_id')->references('id')->on('permission_groups');
         });
     }
 

@@ -22,6 +22,8 @@ return new class extends Migration
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
             $table->timestamp('deleted_at');
+            $table->foreign('tag_id')->references('id')->on('tags');
+            $table->foreign('taggable_id')->references('id')->on('users');
         });
     }
 

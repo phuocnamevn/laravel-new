@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('schools', function (Blueprint $table) {
-            $table->id();
+            $table->bigInteger('id')->primary();
             $table->string('name')->unique();
             $table->string('email')->unique()->nullable();
             $table->string('code')->unique()->nullable();
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('hotline');
             $table->string('province_code');
             $table->string('insitution_code');
-            $table->tinyIncrements('main_branch');
+            $table->tinyInteger('main_branch');
             $table->integer('zip_code');
             $table->string('atribute_information_setting_date');
             $table->string('old_school_investigation_number');

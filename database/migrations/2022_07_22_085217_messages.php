@@ -14,15 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('messages', function (Blueprint $table) {
-            $table->bigInteger('id', 20)->unsigned()->autoIncrement();
+            $table->bigInteger('id')->unsigned()->autoIncrement();
             $table->string('room');
-            $table->bigInteger('sender_id', 20)->unsigned();
+            $table->bigInteger('sender_id')->length(20)->unsigned();
             $table->string('sender_type', 255);
-            $table->bigInteger('receiver_id', 20)->unsigned();
+            $table->bigInteger('receiver_id')->length(20)->unsigned();
             $table->string('receiver_type', 255);
             $table->text('content');
             $table->string('content_type', 255)->default('text');
-            $table->integer('association_id', 10)->unsigned();
+            $table->integer('association_id')->length(10)->unsigned();
             $table->string('association_type', 255);
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();

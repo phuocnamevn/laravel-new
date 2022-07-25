@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('phone', 100);
             $table->string('address');
             $table->bigInteger('school_id')->nullable();
-            $table->tinyInteger('type', 10);
-            $table->integer('parent_id', 10);
+            $table->tinyInteger('type')->length('10');
+            $table->integer('parent_id')->length('10');
             $table->timestamp('verified_at');
             $table->boolean('closed', false);
             $table->string('code')->unique()->nullable();
@@ -36,6 +36,7 @@ return new class extends Migration
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
             $table->timestamp('deleted_at');
+            $table->foreign('school_id')->references('id')->on('schools');
         });
     }
 
