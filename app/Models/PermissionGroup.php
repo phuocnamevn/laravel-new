@@ -8,8 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class PermissionGroup extends Model
 {
     use HasFactory;
-    // public function permission()
-    // {
-    //     return $this->hasOne(Permissions::class);
-    // }
 }

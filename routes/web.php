@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +29,6 @@ Route::prefix('admin')->group(function () {
     Route::resource('category', CategoryController::class);
     Route::post('testmail', [UserController::class, 'formSendMail'])->name('testmail');
 });
+Auth::routes(['verify' => true]);
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
