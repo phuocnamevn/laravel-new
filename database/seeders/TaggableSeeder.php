@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Taggable;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class TaggableSeeder extends Seeder

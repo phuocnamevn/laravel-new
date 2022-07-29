@@ -3,8 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Role;
-use Database\Factories\RolesFactory;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class RoleSeeder extends Seeder
