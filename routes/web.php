@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,15 +32,6 @@ Route::prefix('admin')->group(function () {
     Route::resource('category', CategoryController::class);
     Route::post('testmail', [UserController::class, 'formSendMail'])->name('testmail');
 });
-Route::prefix('user')->group(function () {
-    Route::get('login', [LoginController::class, 'index']);
-    Route::post('login/store', [LoginController::class, 'store'])->name('login');
-    Route::get('login/store', function(){
-        return 'Đăng nhập thành công';
-    })->name('logged');
-    Route::get('register', [RegisterController::class, 'index']);
-    Route::post('register/store', [RegisterController::class, 'store'])->name('reg');
-    Route::get('register/store', function(){
-        return 'Đăng ký thành công. Hãy kiểm tra email để xác minh tài khoản của bạn';
-    })->name('regged');
-});
+Auth::routes(['verify' => true]);
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
