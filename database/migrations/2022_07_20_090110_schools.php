@@ -14,6 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('schools', function (Blueprint $table) {
+
+            $table->bigInteger('id')->autoIncrement();
+
             $table->bigInteger('id')->primary();
             $table->string('name')->unique();
             $table->string('email')->unique()->nullable();

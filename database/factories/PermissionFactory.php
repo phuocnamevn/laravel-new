@@ -1,0 +1,25 @@
+<?php
+
+namespace Database\Factories;
+
+use App\Models\PermissionGroup;
+use Illuminate\Database\Eloquent\Factories\Factory;
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Permissions>
+ */
+class PermissionFactory extends Factory
+{
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition()
+    {
+        return [
+            'name' => fake()->name(),
+            'key' => fake()->name(),
+            'permission_group_id' => PermissionGroup::all()->random()->id
+        ];
+    }
+}
