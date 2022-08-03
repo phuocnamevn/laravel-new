@@ -20,7 +20,7 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
     Route::get('user/form-send-mail', [UserController::class, 'formSendUserProfile'])->name('formSendMail');
     Route::resource('user', UserController::class);
     Route::resource('role', RoleController::class);
