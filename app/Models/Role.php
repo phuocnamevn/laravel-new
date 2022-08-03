@@ -8,7 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class Role extends Model
 {
     use HasFactory;
-    // protected $tabel = 'roles';
-    // protected $primaryKey = 'id';
-    // public $incrementing = false;
 }
