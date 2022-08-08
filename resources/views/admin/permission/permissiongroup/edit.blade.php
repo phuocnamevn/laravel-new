@@ -8,6 +8,7 @@
 </div>
     <div class="col-md-12">
 <form class="g-3 needs-validation" method="post" action="{{ route('permission-group.update', $show->id) }}">
+  @method('PUT')
   @csrf
   <div class="row">
     <div class="col-md-12 mb-3">
@@ -17,6 +18,9 @@
   <div class="col-md-12 mb-3">
     <label for="name" class="form-label">Name</label>
     <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp" value="{{$show->name}}">
+    @error('name')
+    <span class="text-danger text-left">{{$message}}</span>
+    @enderror
   </div>
   <div class="col-md-12 text-center">
   <button type="submit" class="btn btn-primary">Save</button>

@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Repositories\Interfaces\PermissionGroupInterface;
-use App\Repositories\PermissionGroup;
+use App\Repositories\Admin\PermissionGroup\PermissionGroupInterface;
+use App\Repositories\Admin\PermissionGroup\PermissionGroupRepository;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -17,7 +17,7 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         $this->app->bind(
             PermissionGroupInterface::class,
-            PermissionGroup::class
+            PermissionGroupRepository::class
         );
     }
 

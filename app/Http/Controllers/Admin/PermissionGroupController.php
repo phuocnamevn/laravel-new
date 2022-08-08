@@ -4,8 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PermissionGroupRequest;
-use App\Repositories\Interfaces\PermissionGroupInterface;
-use Illuminate\Http\Request;
+use App\Repositories\Admin\PermissionGroup\PermissionGroupInterface;
 
 class PermissionGroupController extends Controller
 {
@@ -22,7 +21,7 @@ class PermissionGroupController extends Controller
     }
     public function index()
     {
-        $db = $this->permissionGroupRepository->getPermissiongroup();
+        $db = $this->permissionGroupRepository->paginate();
         return view('admin.permission.permissiongroup.index', compact('db'));
     }
 
@@ -54,7 +53,7 @@ class PermissionGroupController extends Controller
      */
     public function show($id)
     {
-        $show = $this->permissionGroupRepository->findid($id);
+        $show = $this->permissionGroupRepository->findById($id);
         return view('admin.permission.permissiongroup.form', compact('show'));
     }
 
@@ -66,7 +65,7 @@ class PermissionGroupController extends Controller
      */
     public function edit($id)
     {
-        $show = $this->permissionGroupRepository->findid($id);
+        $show = $this->permissionGroupRepository->findById($id);
         return view('admin.permission.permissiongroup.edit', compact('show'));
     }
 
@@ -77,9 +76,10 @@ class PermissionGroupController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PermissionGroupRequest $request, $id)
     {
-        //
+        $this->permissionGroupRepository->save($request->validated(), ['id' => $id]);
+        return $this->index();
     }
 
     /**
@@ -90,7 +90,7 @@ class PermissionGroupController extends Controller
      */
     public function destroy($id)
     {
-        $this->permissionGroupRepository->deletebyid($id);
+        $this->permissionGroupRepository->deleteById($id);
         return redirect()->back();
     }
 }
