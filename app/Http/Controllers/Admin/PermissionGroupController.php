@@ -15,10 +15,11 @@ class PermissionGroupController extends Controller
      */
     public $permissionGroupRepository;
 
-    public function __construct(PermissionGroupInterface $permissionGroup)
+    public function __construct(PermissionGroupInterface $permissionGroupRepository)
     {
-        $this->permissionGroupRepository  = $permissionGroup;
+        $this->permissionGroupRepository  = $permissionGroupRepository;
     }
+
     public function index()
     {
         $db = $this->permissionGroupRepository->paginate();
@@ -32,7 +33,7 @@ class PermissionGroupController extends Controller
      */
     public function create()
     {
-        return view('admin.permission.permissiongroup.create');
+        return view('admin.permission.permissiongroup.form');
     }
 
     /**
@@ -43,6 +44,8 @@ class PermissionGroupController extends Controller
      */
     public function store(PermissionGroupRequest $request)
     {
+        $this->permissionGroupRepository->save($request->validated());
+        return $this->index();
     }
 
     /**
@@ -53,6 +56,9 @@ class PermissionGroupController extends Controller
      */
     public function show($id)
     {
+        if (! $show = $this->permissionGroupRepository->findById($id)) {
+            abort(404);
+        }
         $show = $this->permissionGroupRepository->findById($id);
         return view('admin.permission.permissiongroup.form', compact('show'));
     }
@@ -65,8 +71,11 @@ class PermissionGroupController extends Controller
      */
     public function edit($id)
     {
-        $show = $this->permissionGroupRepository->findById($id);
-        return view('admin.permission.permissiongroup.edit', compact('show'));
+        if (! $show = $this->permissionGroupRepository->findById($id)) {
+            abort(404);
+        }
+        $edit = $this->permissionGroupRepository->findById($id);
+        return view('admin.permission.permissiongroup.form', compact('edit'));
     }
 
     /**
