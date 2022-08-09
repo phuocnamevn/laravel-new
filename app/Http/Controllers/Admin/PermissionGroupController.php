@@ -103,6 +103,6 @@ class PermissionGroupController extends Controller
     public function destroy($id)
     {
         $this->permissionGroupRepository->deleteById($id);
-        return redirect()->back();
+        return redirect()->route('permission-group.index')->with(['alert' => 'Delete Success!']);
     }
 }
