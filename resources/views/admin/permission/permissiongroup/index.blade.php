@@ -6,6 +6,9 @@
     <h2 class="float-start">List Permission group</h2>
     <a href="/admin/permission-group/create" class="btn btn-primary float-end">Create+</a>
     </div>
+    @if (Session::has('alert'))
+                        <div class="alert alert-info">{{ Session::get('alert') }}</div>
+                    @endif
 <table class="table table-bordered">
     <thead>
       <tr>
@@ -15,8 +18,8 @@
       </tr>
     </thead>
     <tbody>
-      @if($db)
-      @foreach ($db as $item)
+      @if($permissionGroup)
+      @foreach ($permissionGroup as $item)
       <tr>
         <td>{{$item->id}}</td>
         <td>{{$item->name}}</td>
@@ -34,7 +37,7 @@
   </table>
   <div class="col-md-12 text-center">
     <ul class="pagination">
-      {{ $db->links() }}
+      {{ $permissionGroup->links() }}
     </ul>
   </div>
 </div>
