@@ -12,5 +12,5 @@ interface BaseRepositoryInterface
 
     public function deleteById($id);
 
-    public function getAll(array $input = []);
+    public function getAll();
 }

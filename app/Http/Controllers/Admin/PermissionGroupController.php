@@ -23,7 +23,7 @@ class PermissionGroupController extends Controller
     public function index()
     {
         return view('admin.permission.permissiongroup.index', [
-            'permissionGroup' => $this->permissionGroupRepository->paginate()
+            'permissionGroups' => $this->permissionGroupRepository->paginate()
             ]);
     }
 
@@ -46,7 +46,7 @@ class PermissionGroupController extends Controller
     public function store(PermissionGroupRequest $request)
     {
         $this->permissionGroupRepository->save($request->validated());
-        return redirect()->route('permission-group.index')->with(['alert' => 'Add Success!']);
+        return redirect()->route('permission-group.index')->with(['message' => 'Add Success!']);
     }
 
     /**
@@ -57,12 +57,11 @@ class PermissionGroupController extends Controller
      */
     public function show($id)
     {
-        if (! $permissionGroupShow = $this->permissionGroupRepository->findById($id)) {
+        if (! $permissionGroup = $this->permissionGroupRepository->findById($id)) {
             abort(404);
         }
-        $permissionGroupShow = $this->permissionGroupRepository->findById($id);
-        return view('admin.permission.permissiongroup.form', [
-            'permissionGroupShow' => $permissionGroupShow]);
+        return view('admin.permission.permissiongroup.show', [
+            'permissionGroup' => $permissionGroup]);
     }
 
     /**
@@ -73,12 +72,11 @@ class PermissionGroupController extends Controller
      */
     public function edit($id)
     {
-        if (! $permissionGroupEdit = $this->permissionGroupRepository->findById($id)) {
+        if (! $permissionGroup = $this->permissionGroupRepository->findById($id)) {
             abort(404);
         }
-        $permissionGroupEdit = $this->permissionGroupRepository->findById($id);
         return view('admin.permission.permissiongroup.form', [
-            'permissionGroupEdit' => $permissionGroupEdit]);
+            'permissionGroup' => $permissionGroup]);
     }
 
     /**
@@ -91,7 +89,7 @@ class PermissionGroupController extends Controller
     public function update(PermissionGroupRequest $request, $id)
     {
         $this->permissionGroupRepository->save($request->validated(), ['id' => $id]);
-        return redirect()->route('permission-group.index')->with(['alert' => 'Edit Success!']);
+        return redirect()->route('permission-group.index')->with(['message' => 'Edit Success!']);
     }
 
     /**
@@ -103,6 +101,6 @@ class PermissionGroupController extends Controller
     public function destroy($id)
     {
         $this->permissionGroupRepository->deleteById($id);
-        return redirect()->route('permission-group.index')->with(['alert' => 'Delete Success!']);
+        return redirect()->route('permission-group.index')->with(['message' => 'Delete Success!']);
     }
 }

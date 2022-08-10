@@ -6,8 +6,8 @@
     <h2 class="float-start">List Permission group</h2>
     <a href="/admin/permission-group/create" class="btn btn-primary float-end">Create+</a>
     </div>
-    @if (Session::has('alert'))
-                        <div class="alert alert-info">{{ Session::get('alert') }}</div>
+    @if (Session::has('message'))
+                        <div class="alert alert-info">{{ Session::get('message') }}</div>
                     @endif
 <table class="table table-bordered">
     <thead>
@@ -18,8 +18,8 @@
       </tr>
     </thead>
     <tbody>
-      @if($permissionGroup)
-      @foreach ($permissionGroup as $item)
+      @if($permissionGroups)
+      @foreach ($permissionGroups as $item)
       <tr>
         <td>{{$item->id}}</td>
         <td>{{$item->name}}</td>
@@ -27,7 +27,7 @@
           <form class="d-inline" method="post" action="{{ route('permission-group.destroy', $item->id) }}">
             @csrf
             @method('DELETE')
-            <button type="submit" class="btn btn-danger">Delete</button>
+            <button type="submit" onclick="return confirm('Do you want to delete?')" class="btn btn-danger"> Delete </button>
         </form>
         </td>
       </tr>
@@ -37,7 +37,7 @@
   </table>
   <div class="col-md-12 text-center">
     <ul class="pagination">
-      {{ $permissionGroup->links() }}
+      {{ $permissionGroups->links() }}
     </ul>
   </div>
 </div>
