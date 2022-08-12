@@ -4,9 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class Admin
+class Locale
 {
     /**
      * Handle an incoming request.
@@ -17,9 +16,8 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->isAdmin()) {
-            return $next($request);
-        }
-        return to_route('home');
+        $language = session()->get('website_language', config('app.locale'));
+        config(['app.locale' => $language]);
+        return $next($request);
     }
 }

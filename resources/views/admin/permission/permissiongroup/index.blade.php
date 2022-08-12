@@ -3,7 +3,7 @@
 <div class="col-md-7 mb-3">
   <div class="row" style="background-color: rgb(241, 241, 241);">
     <div class="col-md-12">
-    <h2 class="float-start">List Permission group</h2>
+    <h2 class="float-start">{{__('messages.list_permission_group')}}</h2>
     <a href="/admin/permission-group/create" class="btn btn-primary float-end">Create+</a>
     </div>
     @if (Session::has('message'))
