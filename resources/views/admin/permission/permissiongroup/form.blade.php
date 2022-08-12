@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-md-12">
     <h2 class="float-start">Permission group</h2>
-    <a href="/admin/permission-group" class="btn btn-primary float-end">Back</a>
+    <a href="/admin/permission-group" class="btn btn-primary float-end">{{__('messages.back')}}</a>
 </div>
     <div class="col-md-12">
       @if (!empty($permissionGroup))
@@ -17,15 +17,15 @@
             <input type="text" class="form-control" name="id" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$permissionGroup->id}}" disabled>
           </div>
         <div class="col-md-12 mb-3">
-          <label for="name" class="form-label">Name</label>
+          <label for="name" class="form-label">{{__('messages.name')}}</label>
           <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp" value="{{$permissionGroup->name}}">
           @error('name')
           <span class="text-danger text-left">{{$message}}</span>
           @enderror
         </div>
         <div class="col-md-12 text-center">
-        <button type="submit" class="btn btn-primary">Save</button>
-        <button type="reset" class="btn btn-secondary">Reset</button>
+        <button type="submit" class="btn btn-primary">{{__('messages.save')}}</button>
+        <button type="reset" class="btn btn-secondary">{{__('messages.reset')}}</button>
         </div>
         </div>
       </form>
@@ -41,8 +41,8 @@
           @enderror
         </div>
         <div class="col-md-12 text-center">
-        <button type="submit" class="btn btn-primary">Save</button>
-        <button type="reset" class="btn btn-secondary">Reset</button>
+        <button type="submit" class="btn btn-primary">{{__('messages.save')}}</button>
+        <button type="reset" class="btn btn-secondary">{{__('messages.reset')}}</button>
         </div>
         </div>
       </form>

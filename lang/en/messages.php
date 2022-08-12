@@ -14,5 +14,17 @@ return [
     */
 
     'success' => 'Success',
-    'list_permission_group' => 'List Permission group'
+    'list_permission_group' => 'List Permission group',
+    'create' => 'Create',
+    'edit' => 'Edit',
+    'show' => 'Show',
+    'delete' => 'Delete',
+    'back' => 'Back',
+    'save' => 'Save',
+    'reset' => 'Reset',
+    'name' => 'Name',
+    'do_you_want_to_delete' => 'Do you want to delete?',
+    'delete_success' => 'Delete success',
+    'create_success' => 'Create success',
+    'edit_success' => 'Edit success'
 ];

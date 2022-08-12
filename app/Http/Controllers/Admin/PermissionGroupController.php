@@ -46,7 +46,7 @@ class PermissionGroupController extends Controller
     public function store(PermissionGroupRequest $request)
     {
         $this->permissionGroupRepository->save($request->validated());
-        return redirect()->route('permission-group.index')->with(['message' => 'Add Success!']);
+        return redirect()->route('permission-group.index')->with(['message' => __('messages.create_success')]);
     }
 
     /**
@@ -89,7 +89,7 @@ class PermissionGroupController extends Controller
     public function update(PermissionGroupRequest $request, $id)
     {
         $this->permissionGroupRepository->save($request->validated(), ['id' => $id]);
-        return redirect()->route('permission-group.index')->with(['message' => 'Edit Success!']);
+        return redirect()->route('permission-group.index')->with(['message' => __('messages.edit_success')]);
     }
 
     /**
@@ -101,6 +101,6 @@ class PermissionGroupController extends Controller
     public function destroy($id)
     {
         $this->permissionGroupRepository->deleteById($id);
-        return redirect()->route('permission-group.index')->with(['message' => 'Delete Success!']);
+        return redirect()->route('permission-group.index')->with(['message' => __('messages.delete_success')]);
     }
 }

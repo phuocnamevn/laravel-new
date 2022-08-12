@@ -21,7 +21,7 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::prefix('admin')->middleware('auth', 'admin', 'locale')->group(function () {
+Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
     Route::get('user/form-send-mail', [UserController::class, 'formSendUserProfile'])->name('formSendMail');
     Route::resource('user', UserController::class);
     Route::resource('role', RoleController::class);
@@ -30,8 +30,6 @@ Route::prefix('admin')->middleware('auth', 'admin', 'locale')->group(function ()
     Route::resource('product', ProductController::class);
     Route::resource('category', CategoryController::class);
     Route::post('testmail', [UserController::class, 'formSendMail'])->name('testmail');
-    Route::get('change-language/{language}', [HomeController::class, 'changeLanguage'])
-        ->name('user.change-language');
 });
 Auth::routes(['verify' => true]);
 

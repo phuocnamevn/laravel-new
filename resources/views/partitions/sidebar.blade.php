@@ -10,9 +10,6 @@
           <li class="list-group-item active" aria-current="true">Catalog</li>
           <a href="/admin/product" class="list-group-item">Product management</a>
           <a href="/admin/category" class="list-group-item">Category management</a>
-          <li class="list-group-item active" aria-current="true">Language</li>
-          <a href="{!! route('user.change-language', ['en']) !!}" class="list-group-item">English</a>
-          <a href="{!! route('user.change-language', ['vi']) !!}" class="list-group-item">Vietnam</a>
         </ul>
       </div>
       @yield('content')

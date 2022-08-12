@@ -4,7 +4,7 @@
   <div class="row" style="background-color: rgb(241, 241, 241);">
     <div class="col-md-12">
     <h2 class="float-start">{{__('messages.list_permission_group')}}</h2>
-    <a href="/admin/permission-group/create" class="btn btn-primary float-end">Create+</a>
+    <a href="/admin/permission-group/create" class="btn btn-primary float-end">{{__('messages.create')}}+</a>
     </div>
     @if (Session::has('message'))
                         <div class="alert alert-info">{{ Session::get('message') }}</div>
@@ -23,11 +23,11 @@
       <tr>
         <td>{{$item->id}}</td>
         <td>{{$item->name}}</td>
-        <td><a href="{{ route('permission-group.edit', $item->id) }}" class="btn btn-warning">Edit</a> <a href="{{ route('permission-group.show', $item->id) }}" class="btn btn-primary">Show</a>
+        <td><a href="{{ route('permission-group.edit', $item->id) }}" class="btn btn-warning">{{__('messages.edit')}}</a> <a href="{{ route('permission-group.show', $item->id) }}" class="btn btn-primary">{{__('messages.show')}}</a>
           <form class="d-inline" method="post" action="{{ route('permission-group.destroy', $item->id) }}">
             @csrf
             @method('DELETE')
-            <button type="submit" onclick="return confirm('Do you want to delete?')" class="btn btn-danger"> Delete </button>
+            <button type="submit" onclick="return confirm('{{__('messages.do_you_want_to_delete')}}')" class="btn btn-danger"> {{__('messages.delete')}} </button>
         </form>
         </td>
       </tr>
