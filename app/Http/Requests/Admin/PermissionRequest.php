@@ -26,8 +26,9 @@ class PermissionRequest extends FormRequest
     {
         return [
             'name' => ['required', Rule::unique('permissions')->ignore($this->permission)],
-            'key' => 'required',
-            'permission_group_id' => 'required'
+            'key' => ['required', Rule::unique('permissions')->ignore($this->permission)],
+            'permission_group_id' => ['required', 'numeric', Rule::exists('permission_groups', 'id'),
+            ],
         ];
     }
 }
