@@ -25,6 +25,7 @@ class PermissionGroupController extends Controller
         return view('admin.permission.permissiongroup.index', [
             'permissionGroups' => $this->permissionGroupRepository->paginate()
             ]);
+            dd();
     }
 
     /**
