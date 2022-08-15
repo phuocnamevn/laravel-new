@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class PermissionRequest extends FormRequest
 {
@@ -24,8 +25,9 @@ class PermissionRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'required',
-            'name' => 'required',
+            'name' => ['required', Rule::unique('permissions')->ignore($this->permission)],
+            'key' => 'required',
+            'permission_group_id' => 'required'
         ];
     }
 }

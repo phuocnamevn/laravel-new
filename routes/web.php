@@ -32,5 +32,4 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
     Route::post('testmail', [UserController::class, 'formSendMail'])->name('testmail');
 });
 Auth::routes(['verify' => true]);
-
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
