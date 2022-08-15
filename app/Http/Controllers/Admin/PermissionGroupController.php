@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PermissionGroupRequest;
-use App\Repositories\Admin\PermissionGroup\PermissionGroupRepository;
+use App\Repositories\PermissionGroup\PermissionGroupRepository;
 
 class PermissionGroupController extends Controller
 {
@@ -24,7 +24,7 @@ class PermissionGroupController extends Controller
     {
         return view('admin.permission.permissiongroup.index', [
             'permissionGroups' => $this->permissionGroupRepository->paginate()
-            ]);
+        ]);
     }
 
     /**
@@ -61,7 +61,8 @@ class PermissionGroupController extends Controller
             abort(404);
         }
         return view('admin.permission.permissiongroup.show', [
-            'permissionGroup' => $permissionGroup]);
+            'permissionGroup' => $permissionGroup
+        ]);
     }
 
     /**
@@ -76,7 +77,8 @@ class PermissionGroupController extends Controller
             abort(404);
         }
         return view('admin.permission.permissiongroup.form', [
-            'permissionGroup' => $permissionGroup]);
+            'permissionGroup' => $permissionGroup
+        ]);
     }
 
     /**

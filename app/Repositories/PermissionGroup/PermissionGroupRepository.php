@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Admin\PermissionGroup;
+namespace App\Repositories\PermissionGroup;
 
 use App\Models\PermissionGroup;
 use App\Repositories\BaseRepository;
