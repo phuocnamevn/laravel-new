@@ -82,7 +82,8 @@ class PermissionController extends Controller
             abort(404);
         }
         return view('admin.permission.form', [
-            'permission' => $permission
+            'permission' => $permission,
+            'permissionGroups' => $this->permissionGroupRepository->getAll()
         ]);
     }
 

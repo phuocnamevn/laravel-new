@@ -16,6 +16,7 @@ return [
     'success' => 'Thành công',
     'list_permission_group' => 'Danh sách nhóm quyền',
     'list_permission' => 'Danh sách quyền',
+    'list_role' => 'Danh sách vai trò',
     'create' => 'Tạo',
     'edit' => 'Sửa',
     'show' => 'Chi tiết',
