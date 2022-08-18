@@ -13,11 +13,13 @@ class RoleController extends Controller
 {
     protected $roleRepository;
     protected $permissionGroupRepository;
+
     public function __construct(RoleRepository $roleRepository, PermissionGroupRepository $permissionGroupRepository)
     {
         $this->roleRepository = $roleRepository;
         $this->permissionGroupRepository = $permissionGroupRepository;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -29,6 +31,7 @@ class RoleController extends Controller
             'roles' => $this->roleRepository->with('permissions')->paginate(),
         ]);
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -40,6 +43,7 @@ class RoleController extends Controller
             'permissionGroups' => $this->permissionGroupRepository->with('permissions')->get(),
         ]);
     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -59,6 +63,7 @@ class RoleController extends Controller
             return redirect()->back();
         }
     }
+
     /**
      * Display the specified resource.
      *
@@ -75,6 +80,7 @@ class RoleController extends Controller
             'permissionGroups' => $this->permissionGroupRepository->with('permissions')->get(),
         ]);
     }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -91,6 +97,7 @@ class RoleController extends Controller
             'permissionGroups' => $this->permissionGroupRepository->with('permissions')->get(),
         ]);
     }
+
     /**
      * Update the specified resource in storage.
      *
@@ -111,6 +118,7 @@ class RoleController extends Controller
             return redirect()->back();
         }
     }
+
     /**
      * Remove the specified resource from storage.
      *
