@@ -7,19 +7,37 @@
     <a href="/admin/permission" class="btn btn-primary float-end">{{__('messages.back')}}</a>
 </div>
     <div class="col-md-12">
-      @if (!empty($permissionGroup))
-      <form class="g-3 needs-validation" method="post" action="{{ route('permission.update', $permissionGroup->id) }}">
+      @if (!empty($permission))
+      <form class="g-3 needs-validation" method="post" action="{{ route('permission.update', $permission->id) }}">
         @method('PUT')
         @csrf
         <div class="row">
           <div class="col-md-12 mb-3">
             <label for="exampleInputEmail1" class="form-label">Permission ID</label>
-            <input type="text" class="form-control" name="id" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$permissionGroup->id}}" disabled>
+            <input type="text" class="form-control" name="id" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$permission->id}}" disabled>
           </div>
         <div class="col-md-12 mb-3">
           <label for="name" class="form-label">{{__('messages.name')}}</label>
-          <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp" value="{{$permissionGroup->name}}">
+          <input type="text" class="form-control" id="name" name="name" aria-describedby="" value="{{$permission->name}}">
           @error('name')
+          <span class="text-danger text-left">{{$message}}</span>
+          @enderror
+        </div>
+        <div class="col-md-12 mb-3">
+          <label for="name" class="form-label">Permission Key</label>
+          <input type="text" class="form-control" id="key" name="key" aria-describedby="" value="{{$permission->key}}">
+          @error('key')
+          <span class="text-danger text-left">{{$message}}</span>
+          @enderror
+        </div>
+        <div class="col-md-12 mb-3">
+          <label for="name" class="form-label">Permission Group ID</label>
+          <select class="form-control" name="permission_group_id">
+            @foreach($permissionGroups as $permission)
+            <option value="{{$permission->id}}">{{$permission->name}}</option>
+            @endforeach
+          </select>
+          @error('permission_group_id')
           <span class="text-danger text-left">{{$message}}</span>
           @enderror
         </div>
@@ -50,8 +68,8 @@
         <div class="col-md-12 mb-3">
           <label for="name" class="form-label">Permission Group ID</label>
           <select class="form-control" name="permission_group_id">
-            @foreach($permissionGroups as $permissionGroup)
-            <option value="{{$permissionGroup->id}}">{{$permissionGroup->name}}</option>
+            @foreach($permission as $permission)
+            <option value="{{$permission->id}}">{{$permission->name}}</option>
             @endforeach
           </select>
           @error('permission_group_id')

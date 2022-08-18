@@ -13,4 +13,6 @@ interface BaseRepositoryInterface
     public function deleteById($id);
 
     public function getAll();
+
+    public function with($relations);
 }
