@@ -51,7 +51,7 @@ class RoleController extends Controller
         DB::begintransaction();
         try {
             $role = $this->roleRepository->save($request->validated());
-            $role->Permissions()->sync($request->input('permission_ids'));
+            $role->permissions()->sync($request->input('permission_ids'));
             DB::commit();
             return redirect()->route('role.index')->with(['message' => __('messages.create_success')]);
         } catch (Exception $e) {

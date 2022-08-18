@@ -12,8 +12,8 @@
 <table class="table table-bordered">
     <thead>
       <tr>
-        <th scope="col">Permission ID</th>
-        <th scope="col">Permission Name</th>
+        <th scope="col">Role ID</th>
+        <th scope="col">Role Name</th>
         <th scope="col">Permission Count</th>
         <th scope="col">Action</th>
       </tr>

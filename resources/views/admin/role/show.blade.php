@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-md-12">
     <h2 class="float-start">{{__('messages.list_role')}}</h2>
-    <a href="/admin/permission-group" class="btn btn-primary float-end">{{__('messages.back')}}</a>
+    <a href="/admin/role" class="btn btn-primary float-end">{{__('messages.back')}}</a>
 </div>
     <div class="col-md-12">
       @if(!empty($role))
@@ -12,7 +12,7 @@
         @csrf
         <div class="row">
           <div class="col-md-12 mb-3">
-            <label for="exampleInputEmail1" class="form-label">Permission ID</label>
+            <label for="exampleInputEmail1" class="form-label">Role ID</label>
             <input type="text" class="form-control" name="id" id="exampleInputEmail1" aria-describedby="" value="{{$role->id}}" readonly>
           </div>
         <div class="col-md-12 mb-3">
@@ -43,6 +43,7 @@
             </div>
         @endforeach
         @endif
+        </div>
         </div>
         @endforeach
         @endif
