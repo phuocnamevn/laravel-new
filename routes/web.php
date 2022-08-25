@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\PermissionGroupController;
 use App\Http\Controllers\Admin\ProductController;
@@ -29,6 +30,8 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function () {
     Route::resource('permission-group', PermissionGroupController::class);
     Route::resource('product', ProductController::class);
     Route::resource('category', CategoryController::class);
+    Route::resource('customer', CustomerController::class);
+    Route::post('customer', [CustomerController::class, 'destroyAll'])->name('customer.destroyAll');
     Route::post('testmail', [UserController::class, 'formSendMail'])->name('testmail');
 });
 Auth::routes(['verify' => true]);
